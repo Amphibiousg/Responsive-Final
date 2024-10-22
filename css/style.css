@@ -1,0 +1,120 @@
+/* Mobile-first (default) styles */
+/* Mobile View: One column grid with 10px gap */
+body {
+    background-color: #dedede;
+    padding: 5px;
+    margin: 15px;
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 1.95em;
+}
+
+img {
+    border: 5px solid blue;
+    border-radius: 35px;
+    width: 100%;
+}
+
+.label {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Grid layout: One column for mobile, with 10px gap */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 10px 10px;
+}
+
+/* figure {
+    border: 5px solid blue;
+    border-radius: 35px;
+    text-align: center;
+    padding: 10px;
+} */
+figure {
+    border: 5px solid black;
+    background-color: #333; /* Dark background for black box */
+    color: #ffcc00; /* Yellowish font color for the caption */
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack image and caption vertically */
+    justify-content: center; /* Vertically center the content */
+    align-items: center; /* Horizontally center the content */
+    height: 300px; /* Fixed height for the black box */
+    border-radius: 35px; /* Rounded corners */
+}
+
+img {
+    max-width: 80%; /* Ensure the image fits within the figure */
+    max-height: 60%; /* Ensure the image does not exceed the black box height */
+    margin-bottom: 10px; /* Space between image and text */
+    border: 5px solid blue; /* Border around the image */
+    border-radius: 25px; /* Rounded corners for the image */
+}
+
+figcaption {
+    margin-top: auto; /* Push the caption below the image */
+    font-size: 1.2em;
+}
+
+
+/* Media Query 1: Tablet View (trigger at 772px) */
+@media (min-width: 772px) {
+    /* Two column grid layout */
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Circular shape for figures (border-radius: 50%) */
+    figure {
+        border-radius: 50%;
+    }
+
+    /* Last figure takes up both columns */
+    .grid figure:last-child {
+        grid-column: span 2;
+    }
+}
+
+/* Media Query 2: Large Screen View (trigger at 992px) */
+@media (min-width: 992px) {
+    /* Three-column layout: every third figure spans both columns */
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Remove border radius for figures */
+    figure {
+        border-radius: 0;
+    }
+
+    /* Every third figure spans two columns */
+    .grid figure:nth-child(3n) {
+        grid-column: span 2;
+    }
+}
+
+/* Prefers Reduced Motion: Removes smooth scroll */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Dark Mode: Change figure background, text, and border color */
+@media (prefers-color-scheme: dark) {
+    figure {
+        background-color: #333; /* Dark background color */
+        color: #ffcc00;         /* Light yellowish font color */
+        border-color: black;    /* Black border */
+    }
+}
